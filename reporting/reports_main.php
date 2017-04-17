@@ -30,6 +30,17 @@ $reports = new BoxReports;
 $dim = get_company_pref('use_dimension');
 
 $reports->addReportClass(_('Customer'), RC_CUSTOMER);
+$reports->addReport(RC_CUSTOMER, 101, _('Account &Statement'),
+		array(	_('Start Date') => 'DATEBEGIN',
+				_('End Date') => 'DATEENDM',
+				_('Account') => 'CUSTOMERS_NO_FILTER',
+				_('Show Balance') => 'YES_NO',
+				_('Currency Filter') => 'CURRENCY',
+				_('Suppress Zeros') => 'YES_NO',
+				_('Comments') => 'TEXTBOX',
+				_('Orientation') => 'ORIENTATION',
+				_('Destination') => 'DESTINATION'));
+/*
 $reports->addReport(RC_CUSTOMER, 101, _('Customer &Balances'),
 	array(	_('Start Date') => 'DATEBEGIN',
 			_('End Date') => 'DATEENDM',
@@ -501,7 +512,7 @@ $reports->addReport(RC_GL, 710, _('Audit Trail'),
 			_('Comments') => 'TEXTBOX',
 			_('Orientation') => 'ORIENTATION',
 			_('Destination') => 'DESTINATION'));
-
+*/
 add_custom_reports($reports);
 
 echo $reports->getDisplay();
